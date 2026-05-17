@@ -39,16 +39,23 @@ A aplicação sobe em `http://localhost:8080`.
 
 ## Exemplo de chamada
 
-### GET
+### POST
 
 ```http
-GET /api/ask?question=Explique o que é Java
+POST /api/ask
+Content-Type: application/json
+
+{
+  "question": "Explique o que é Java"
+}
 ```
 
 ### curl
 
 ```bash
-curl "http://localhost:8080/api/ask?question=Explique%20o%20que%20%C3%A9%20Java"
+curl -X POST http://localhost:8080/api/ask \
+  -H "Content-Type: application/json" \
+  -d '{"question": "Explique o que é Java"}'
 ```
 
 ### Resposta esperada

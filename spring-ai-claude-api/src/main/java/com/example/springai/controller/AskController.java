@@ -1,12 +1,13 @@
 package com.example.springai.controller;
 
+import com.example.springai.dto.AskRequest;
 import com.example.springai.dto.AskResponse;
 import com.example.springai.service.AskService;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.Valid;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Validated
@@ -20,9 +21,9 @@ public class AskController {
         this.askService = askService;
     }
 
-    @GetMapping("/ask")
-    public AskResponse ask(@RequestParam @NotBlank(message = "question is required") String question) {
-        String answer = askService.ask(question);
-        return new AskResponse(question, answer);
+    @PostMapping("/ask")
+    public AskResponse ask(@Valid @RequestBody AskRequest request) {
+        String answer = askService.ask(request.question());
+        return new AskResponse(request.question(), answer);
     }
 }
