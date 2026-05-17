@@ -1,0 +1,6 @@
+.vscode/
+.github/
+.idea/
+*.log
+.env
+spring-ai-claude-api/target
