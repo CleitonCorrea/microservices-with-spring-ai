@@ -1,4 +1,4 @@
-﻿# spring-ai-claude-api
+﻿﻿# spring-ai-claude-api
 
 API REST mínima com Java 21, Spring Boot 3.5+, Maven 3.9.15, Spring AI e Anthropic Claude.
 
@@ -41,6 +41,35 @@ A aplicação sobe em `http://localhost:8080`.
 
 ### POST
 
+POST http://localhost:8080/api/ask
+
+Corpo JSON esperado:
+
+```json
+{
+  "question": "Explique o que é Java"
+}
+```
+
+Exemplo de requisição curl:
+
+```bash
+curl -X POST http://localhost:8080/api/ask \
+  -H "Content-Type: application/json" \
+  -d '{"question": "Explique o que é Java"}'
+```
+
+Exemplo de response HTTP:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "question": "Explique o que é Java",
+  "answer": "Java é uma linguagem..."
+}
+```
 
 ### Resposta esperada
 
@@ -67,8 +96,8 @@ spring-ai-claude-api/
       │           ├─ controller/
       │           │  └─ AskController.java
       │           ├─ dto/
-      │           │  └─ AskResponse.java
-      │           └─ service/
+      │           │  ├─ AskRequest.java
+      │           │  └─ AskResponse.java      │           └─ service/
       │              └─ AskService.java
       └─ resources/
          └─ application.properties
