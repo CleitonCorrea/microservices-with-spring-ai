@@ -1,4 +1,4 @@
-﻿﻿# spring-ai-claude-api
+﻿# spring-ai-claude-api
 
 API REST mínima com Java 21, Spring Boot 3.5+, Maven 3.9.15, Spring AI e Anthropic Claude.
 
